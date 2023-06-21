@@ -61,7 +61,7 @@ func DeterministicEthereumKey(source *entropy.Entropy) (private, public string, 
 		return "", "", err
 	}
 	if pub1 != strings.ToLower(crypto.PubkeyToAddress(gethKey.PublicKey).Hex()) {
-		return "", "", err
+		return "", "", fmt.Errorf("public key mismatch")
 	}
 
 	return priv1, pub1, nil
